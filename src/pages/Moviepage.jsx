@@ -5,6 +5,7 @@ import home from "../assets/Home.svg";
 import projector from "../assets/Movie Projector.svg";
 import tv from "../assets/TV Show.svg";
 import calender from "../assets/Calendar.svg";
+import logout from "../assets/Logout.svg";
 
 export default function Moviepage() {
   const { id } = useParams();
@@ -34,8 +35,6 @@ export default function Moviepage() {
 
     fetchMovieDetails();
   }, [id]);
-
-  console.log(movieDetails);
 
   function formatDateToReadable(dateString) {
     // Create a Date object from the input date string
@@ -87,9 +86,9 @@ export default function Moviepage() {
   const formattedDate = formatDateToReadable(movieDetails?.release_date);
 
   return (
-    <div className="p-2 flex flex-col md:flex-row items-center justify-center md:gap-96">
+    <div className="p-4 flex rounded-md flex-col md:flex-row justify-center items-center md:gap-96">
       <div className="flex flex-col items-start gap-4">
-        <img src={logo} alt="" />
+        <img src={logo} alt="" className="w-52" />
         <div className="flex items-start md:flex-col flex-wrap sm:flex-nowrap gap-8 md:gap-16">
           <div className="flex items-center gap-2">
             <img src={home} alt="" className="w-6" />
@@ -106,6 +105,17 @@ export default function Moviepage() {
           <div className="flex items-center gap-2">
             <img src={calender} alt="" className="w-6" />
             <p>Upcoming</p>
+          </div>
+          <div className="hidden md:flex flex-col text-start w-40 p-2 border-gray-300  border-2 bg-[#f8e7eb] text-gray-700 rounded-2xl">
+            <p>Play movie quizzes and earn free tickets</p>
+            <span className="text-xs">50k people are playing now</span>
+            <button className="text-xs border-2 rounded-lg my-2 bg-rose-700/30 p-1 text-white">
+              Start playing
+            </button>
+          </div>
+          <div className="flex items-center">
+            <img src={logout} alt="" className="w-6 md:my-2" />
+            <p>Log out</p>
           </div>
         </div>
       </div>
